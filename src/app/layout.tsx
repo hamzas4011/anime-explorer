@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "AnimeExplorer",
+  title: "Anime Explorer",
   description: "Discover trending and popular anime, or let AI pick your next watch.",
 };
 

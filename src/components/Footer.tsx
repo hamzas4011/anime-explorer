@@ -6,12 +6,12 @@ const Footer = () => {
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
           <div>
-            <h2 className="text-xl font-bold">AnimeExplorer</h2>
+            <h2 className="text-xl font-bold">Anime Explorer</h2>
             <p className="text-sm text-gray-400">Your go-to place for anime reviews and updates.</p>
           </div>
 
           <p className="text-sm text-gray-400">
-            © {new Date().getFullYear()} AnimeExplorer. All rights reserved.
+            © {new Date().getFullYear()} Anime Explorer. All rights reserved.
           </p>
 
           <div className="flex space-x-4" aria-hidden="true">

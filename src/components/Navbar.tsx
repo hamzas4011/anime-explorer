@@ -31,7 +31,7 @@ const Navbar = () => {
           onClick={() => setIsOpen(false)}
           className="text-2xl md:text-3xl font-bold tracking-wide text-white hover:text-gray-300 transition rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
         >
-          AnimeExplorer
+          Anime Explorer
         </Link>
 
         <button

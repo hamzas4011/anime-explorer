@@ -16,7 +16,7 @@ export type ClaudeAnswer = {
 };
 
 const SYSTEM_PROMPT =
-  'You are an anime expert for the AnimeExplorer website. Your only job is recommending anime. ' +
+  'You are an anime expert for the Anime Explorer website. Your only job is recommending anime. ' +
   'Keep answers short and friendly. ' +
   'Put 3 titles in "recommendations" unless the user asks for a different number. ' +
   'Never give more than 5; if the user asks for more than 5, give 5 and say briefly in "answer" ' +

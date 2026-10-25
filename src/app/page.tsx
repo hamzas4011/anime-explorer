@@ -39,7 +39,7 @@ export default function Home() {
   return (
     <div className="bg-gray-900 text-white">
       <section className="flex flex-col items-center justify-center text-center min-h-[20vh] px-6 pt-6 pb-2">
-        <h1 className="text-4xl md:text-5xl font-bold">AnimeExplorer</h1>
+        <h1 className="text-4xl md:text-5xl font-bold">Anime Explorer</h1>
         <p className="mt-2 text-lg text-gray-400">
           Discover popular anime, or let AI pick your next watch.
         </p>
