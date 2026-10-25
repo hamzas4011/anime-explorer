@@ -1,6 +1,6 @@
-# 🌟 AnimeExplorer
+# 🌟 Anime Explorer
 
-A modern, accessible web app for discovering anime, built with **Next.js**, **TypeScript** and **Tailwind CSS**. Browse trending and popular anime, or let AI pick your next watch. 🎌📺
+A modern, accessible web app for discovering anime, built with **Next.js**, **TypeScript** and **Tailwind CSS**. Browse trending and popular anime, or describe what you like and get personalized recommendations powered by the **Claude API**. 🎌📺
 
 [🔗 View the Website](https://anime-search-explore.vercel.app)
 
