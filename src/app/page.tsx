@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Form from "next/form";
-import { AI_EXAMPLES, askUrl } from "./lib/ai-examples";
+import { askUrl } from "./lib/ai-examples";
 
 interface Anime {
   id: number;
@@ -36,7 +36,7 @@ export default function Home() {
         const data: Anime[] = await response.json();
         setTrendingAnime(data);
       } catch {
-        setErrorTrending("Could not load trending anime.");
+        setErrorTrending("Could not load anime.");
       } finally {
         setLoadingTrending(false);
       }
@@ -46,8 +46,8 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="bg-gray-900 text-white">
-      <section className="flex flex-col items-center justify-center text-center min-h-[20vh] px-6 pt-6 pb-2">
+    <div className="container mx-auto px-4 bg-gray-900 text-white">
+      <section className="flex flex-col items-center justify-center text-center min-h-[20vh] pt-6 pb-2">
         <h1 className="text-4xl md:text-5xl font-bold">Anime Explorer</h1>
 
         <label htmlFor="home-ai-question" className="mt-4 text-lg text-gray-300">
@@ -72,23 +72,25 @@ export default function Home() {
           </button>
         </Form>
 
-        <ul aria-label="Example questions" className="mt-3 flex flex-wrap justify-center gap-2">
-          {AI_EXAMPLES.map((example) => (
-            <li key={example}>
+        <p className="mt-4 text-sm text-gray-400">Or pick a genre:</p>
+        <ul aria-label="Genres" className="mt-2 flex flex-wrap justify-center gap-2">
+          {GENRES.map((genre) => (
+            <li key={genre.name}>
               <Link
-                href={askUrl(example)}
-                className="inline-flex items-center min-h-11 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-full px-4 py-2 text-sm text-gray-200 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+                href={askUrl(`Suggest some ${genre.name.toLowerCase()} anime`)}
+                className="inline-flex items-center gap-2 min-h-11 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-full px-4 py-2 text-sm text-gray-200 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
               >
-                {example}
+                <span aria-hidden="true">{genre.emoji}</span>
+                {genre.name}
               </Link>
             </li>
           ))}
         </ul>
       </section>
 
-      <section className="px-4 md:px-12 pt-4 pb-8">
+      <section className="pt-8 pb-12">
         <div className="flex items-baseline justify-between gap-4 mb-6 border-b border-gray-700 pb-2">
-          <h2 className="text-2xl font-semibold">🔥 Top Picks</h2>
+          <h2 className="text-2xl font-semibold">⭐ Highly Rated</h2>
           <Link
             href="/popular"
             className="text-sm text-blue-400 hover:underline rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
@@ -97,7 +99,7 @@ export default function Home() {
           </Link>
         </div>
         {loadingTrending && (
-          <p className="text-center text-gray-400">Loading trending anime...</p>
+          <p className="text-center text-gray-400">Loading anime...</p>
         )}
         {errorTrending && (
           <p className="text-center text-red-500">{errorTrending}</p>
@@ -137,25 +139,6 @@ export default function Home() {
             </div>
           ))}
         </div>
-      </section>
-
-      <section className="px-4 md:px-12 pt-4 pb-12">
-        <h2 className="text-2xl font-semibold mb-6 border-b border-gray-700 pb-2">
-          🎭 Browse by Genre
-        </h2>
-        <ul aria-label="Genres" className="flex flex-wrap gap-3">
-          {GENRES.map((genre) => (
-            <li key={genre.name}>
-              <Link
-                href={askUrl(`Suggest some ${genre.name.toLowerCase()} anime`)}
-                className="inline-flex items-center gap-2 min-h-11 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-full px-5 py-2 text-base text-gray-200 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
-              >
-                <span aria-hidden="true">{genre.emoji}</span>
-                {genre.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
       </section>
     </div>
   );
