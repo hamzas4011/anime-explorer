@@ -14,6 +14,15 @@ interface Anime {
   url: string;
 }
 
+const GENRES = [
+  { name: "Action", emoji: "💥" },
+  { name: "Romance", emoji: "💖" },
+  { name: "Comedy", emoji: "😂" },
+  { name: "Psychological", emoji: "🧠" },
+  { name: "Fantasy", emoji: "🧙" },
+  { name: "Slice of Life", emoji: "🍵" },
+];
+
 export default function Home() {
   const [trendingAnime, setTrendingAnime] = useState<Anime[]>([]);
   const [loadingTrending, setLoadingTrending] = useState(true);
@@ -40,11 +49,8 @@ export default function Home() {
     <div className="bg-gray-900 text-white">
       <section className="flex flex-col items-center justify-center text-center min-h-[20vh] px-6 pt-6 pb-2">
         <h1 className="text-4xl md:text-5xl font-bold">Anime Explorer</h1>
-        <p className="mt-2 text-lg text-gray-400">
-          Discover popular anime, or let AI pick your next watch.
-        </p>
 
-        <label htmlFor="home-ai-question" className="mt-6 text-base text-gray-300">
+        <label htmlFor="home-ai-question" className="mt-4 text-lg text-gray-300">
           Not sure what to watch? Describe it and AI will pick for you.
         </label>
         <Form action="/ask" className="mt-3 w-full max-w-xl flex flex-col sm:flex-row gap-2">
@@ -81,9 +87,15 @@ export default function Home() {
       </section>
 
       <section className="px-4 md:px-12 pt-4 pb-8">
-        <h2 className="text-2xl font-semibold mb-6 border-b border-gray-700 pb-2">
-          🔥 Trending Anime
-        </h2>
+        <div className="flex items-baseline justify-between gap-4 mb-6 border-b border-gray-700 pb-2">
+          <h2 className="text-2xl font-semibold">🔥 Top Picks</h2>
+          <Link
+            href="/popular"
+            className="text-sm text-blue-400 hover:underline rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+          >
+            See all →
+          </Link>
+        </div>
         {loadingTrending && (
           <p className="text-center text-gray-400">Loading trending anime...</p>
         )}
@@ -129,123 +141,21 @@ export default function Home() {
 
       <section className="px-4 md:px-12 pt-4 pb-12">
         <h2 className="text-2xl font-semibold mb-6 border-b border-gray-700 pb-2">
-          🎭 Top Anime by Genre
+          🎭 Browse by Genre
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="bg-gray-800 border-l-4 border-blue-500 p-6 rounded-lg shadow-md hover:bg-gray-700 transition duration-300">
-            <h3 className="text-xl font-bold text-blue-400 mb-1">💥 Action</h3>
-            <p className="text-sm text-gray-400 mb-3">
-              High-energy battles and epic fight scenes.
-            </p>
-            <ul className="space-y-1 text-gray-300 text-sm">
-              <li className="hover:text-white hover:translate-x-1 transition">
-                • Attack on Titan
-              </li>
-              <li className="hover:text-white hover:translate-x-1 transition">
-                • Jujutsu Kaisen
-              </li>
-              <li className="hover:text-white hover:translate-x-1 transition">
-                • Vinland Saga
-              </li>
-            </ul>
-            <Link
-              href="https://myanimelist.net/anime/genre/1/Action"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
-            >
-              <span className="block mt-3 py-1 text-sm text-blue-400 hover:underline">
-                Explore Action Anime →
-              </span>
-            </Link>
-          </div>
-
-          <div className="bg-gray-800 border-l-4 border-pink-500 p-6 rounded-lg shadow-md hover:bg-gray-700 transition duration-300">
-            <h3 className="text-xl font-bold text-pink-400 mb-1">💖 Romance</h3>
-            <p className="text-sm text-gray-400 mb-3">
-              Heartfelt stories of love, connection, and emotion.
-            </p>
-            <ul className="space-y-1 text-gray-300 text-sm">
-              <li className="hover:text-white hover:translate-x-1 transition">
-                • Your Lie in April
-              </li>
-              <li className="hover:text-white hover:translate-x-1 transition">
-                • Toradora
-              </li>
-              <li className="hover:text-white hover:translate-x-1 transition">
-                • Clannad: After Story
-              </li>
-            </ul>
-            <Link
-              href="https://myanimelist.net/anime/genre/22/Romance"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
-            >
-              <span className="block mt-3 py-1 text-sm text-pink-400 hover:underline">
-                Explore Romance Anime →
-              </span>
-            </Link>
-          </div>
-
-          <div className="bg-gray-800 border-l-4 border-yellow-400 p-6 rounded-lg shadow-md hover:bg-gray-700 transition duration-300">
-            <h3 className="text-xl font-bold text-yellow-300 mb-1">😂 Comedy</h3>
-            <p className="text-sm text-gray-400 mb-3">
-              Hilarious characters and over-the-top fun moments.
-            </p>
-            <ul className="space-y-1 text-gray-300 text-sm">
-              <li className="hover:text-white hover:translate-x-1 transition">
-                • Gintama
-              </li>
-              <li className="hover:text-white hover:translate-x-1 transition">
-                • Konosuba
-              </li>
-              <li className="hover:text-white hover:translate-x-1 transition">
-                • Great Teacher Onizuka
-              </li>
-            </ul>
-            <Link
-              href="https://myanimelist.net/anime/genre/4/Comedy"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
-            >
-              <span className="block mt-3 py-1 text-sm text-yellow-300 hover:underline">
-                Explore Comedy Anime →
-              </span>
-            </Link>
-          </div>
-
-          <div className="bg-gray-800 border-l-4 border-purple-500 p-6 rounded-lg shadow-md hover:bg-gray-700 transition duration-300">
-            <h3 className="text-xl font-bold text-purple-400 mb-1">
-              🧠 Psychological
-            </h3>
-            <p className="text-sm text-gray-400 mb-3">
-              Mind-bending plots and intense character studies.
-            </p>
-            <ul className="space-y-1 text-gray-300 text-sm">
-              <li className="hover:text-white hover:translate-x-1 transition">
-                • Death Note
-              </li>
-              <li className="hover:text-white hover:translate-x-1 transition">
-                • Monster
-              </li>
-              <li className="hover:text-white hover:translate-x-1 transition">
-                • Paranoia Agent
-              </li>
-            </ul>
-            <Link
-              href="https://myanimelist.net/anime/genre/40/Psychological"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
-            >
-              <span className="block mt-3 py-1 text-sm text-purple-400 hover:underline">
-                Explore Psychological Anime →
-              </span>
-            </Link>
-          </div>
-        </div>
+        <ul aria-label="Genres" className="flex flex-wrap gap-3">
+          {GENRES.map((genre) => (
+            <li key={genre.name}>
+              <Link
+                href={askUrl(`Suggest some ${genre.name.toLowerCase()} anime`)}
+                className="inline-flex items-center gap-2 min-h-11 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-full px-5 py-2 text-base text-gray-200 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+              >
+                <span aria-hidden="true">{genre.emoji}</span>
+                {genre.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </section>
     </div>
   );
