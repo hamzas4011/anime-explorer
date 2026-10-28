@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { getTopAnime } from "../lib/jikan";
+import { getTopAnime, posterUrl } from "../lib/jikan";
 
 export const revalidate = 21600;
 
@@ -15,7 +15,7 @@ export default async function EditorsPage() {
     .map((anime) => ({
       id: anime.mal_id,
       title: anime.title,
-      image: anime.images.jpg.image_url,
+      image: posterUrl(anime),
       synopsis: anime.synopsis,
       url: `https://myanimelist.net/anime/${anime.mal_id}`,
     }));
@@ -40,8 +40,9 @@ export default async function EditorsPage() {
               width={400}
               height={560}
               sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, (min-width: 640px) 50vw, 100vw"
+              quality={90}
               preload={index < 4}
-              className="w-full h-56 object-cover"
+              className="w-full aspect-[3/4] object-cover"
             />
 
             <div className="p-4 space-y-2 flex flex-col justify-between h-full">

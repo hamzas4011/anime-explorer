@@ -101,9 +101,11 @@ export default function Home() {
                 src={anime.image}
                 alt={anime.title}
                 width={400}
-                height={250}
+                height={560}
+                sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                quality={90}
                 loading={index < 4 ? "eager" : "lazy"}
-                className="w-full h-56 object-cover"
+                className="w-full aspect-[3/4] object-cover"
               />
               <div className="p-4">
                 <h3 className="text-sm font-semibold truncate">{anime.title}</h3>

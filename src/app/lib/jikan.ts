@@ -13,9 +13,14 @@ export type JikanAnime = {
     jpg: {
       image_url: string;
       small_image_url?: string;
+      large_image_url?: string;
     };
   };
 };
+
+export function posterUrl(anime: JikanAnime): string {
+  return anime.images.jpg.large_image_url ?? anime.images.jpg.image_url;
+}
 
 const JIKAN_TOP_URL = "https://api.jikan.moe/v4/top/anime";
 const REVALIDATE_SECONDS = 21600;

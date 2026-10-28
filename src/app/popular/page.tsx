@@ -13,8 +13,13 @@ interface Anime {
   images: {
     jpg: {
       image_url: string;
+      large_image_url?: string;
     };
   };
+}
+
+function posterUrl(anime: Anime): string {
+  return anime.images.jpg.large_image_url ?? anime.images.jpg.image_url;
 }
 
 export default function PopularPage() {
@@ -80,12 +85,13 @@ export default function PopularPage() {
             whileTap={{ scale: 0.98 }}
             className="bg-gray-800 rounded-xl cursor-pointer overflow-hidden shadow-md hover:shadow-blue-400/30 border border-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 transition duration-300"
           >
-            <div className="relative w-full h-56">
+            <div className="relative w-full aspect-[3/4]">
               <Image
-                src={anime.images.jpg.image_url}
+                src={posterUrl(anime)}
                 alt={anime.title}
                 fill
                 sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                quality={90}
                 preload={index < 4}
                 className="object-cover"
               />
@@ -127,10 +133,11 @@ export default function PopularPage() {
 
             <div className="relative w-full h-56 mb-4">
               <Image
-                src={selectedAnime.images.jpg.image_url}
+                src={posterUrl(selectedAnime)}
                 alt={`Poster of ${selectedAnime.title}`}
                 fill
                 sizes="(min-width: 768px) 28rem, 100vw"
+                quality={90}
                 className="object-cover rounded-md"
               />
             </div>
