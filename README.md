@@ -4,7 +4,7 @@ A modern, accessible web app for discovering anime, built with **Next.js**, **Ty
 
 [🔗 View the Website](https://anime-search-explore.vercel.app)
 
-![Anime Explorer home page](public/preview.png)
+![Anime Explorer home page]<img width="1229" height="951" alt="Skjermbilde 2026-10-28 110619" src="https://github.com/user-attachments/assets/eafa6a0c-22ce-4ce5-b027-cce3a4f5ca77" />
 
 ## 🎯 Features
 
